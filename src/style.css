@@ -1,4 +1,4 @@
-/* General */
+/* ---------------- General ---------------- */
 body, html {
   font-family: 'Arial', sans-serif;
   background: linear-gradient(135deg, #e0c3fc, #8ec5fc);
@@ -6,16 +6,18 @@ body, html {
   padding: 0;
 }
 
-/* Contenedor principal */
 .dashboard-container {
   min-height: 100vh;
   padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Títulos */
+/* ---------------- Títulos ---------------- */
 .dashboard-title {
   text-align: center;
-  color: #ffffff; /* mantén blanco para contraste */
+  color: #ffffff;
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 32px;
@@ -28,14 +30,16 @@ h2 {
   margin-bottom: 16px;
 }
 
-/* Formularios */
+/* ---------------- Formulario ---------------- */
 .form-container {
+  width: 100%;
   max-width: 960px;
-  margin: 0 auto 40px;
+  margin-bottom: 40px;
   background: #fff;
   padding: 24px;
   border-radius: 20px;
   box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+  position: relative;
 }
 
 .form-grid {
@@ -44,7 +48,13 @@ h2 {
   gap: 16px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
   .form-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -62,6 +72,7 @@ input {
   border-radius: 10px;
   outline: none;
   box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  width: 100%;
 }
 
 input:focus {
@@ -69,9 +80,9 @@ input:focus {
   box-shadow: 0 0 0 3px rgba(99,102,241,0.3);
 }
 
-/* Botones */
+/* ---------------- Botones ---------------- */
 .btn-submit {
-  grid-column: span 3;
+  grid-column: span 1;
   padding: 12px 24px;
   background-color: #4f46e5;
   color: #fff;
@@ -80,6 +91,7 @@ input:focus {
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
+  justify-self: center;
 }
 
 .btn-submit:hover {
@@ -102,7 +114,7 @@ input:focus {
   transform: translateY(-1px);
 }
 
-/* Previsualización */
+/* ---------------- Previsualización ---------------- */
 .preview {
   margin-top: 20px;
   padding: 16px;
@@ -111,20 +123,17 @@ input:focus {
   display: flex;
   justify-content: space-between;
   font-weight: bold;
+  flex-wrap: wrap;
 }
 
-.positive {
-  color: #16a34a;
-}
+.positive { color: #16a34a; }
+.negative { color: #dc2626; }
 
-.negative {
-  color: #dc2626;
-}
-
-/* Tabla */
+/* ---------------- Tabla ---------------- */
 .table-container {
+  width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin-bottom: 40px;
   background: #fff;
   padding: 24px;
   border-radius: 20px;
@@ -138,6 +147,7 @@ input:focus {
 table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 600px;
 }
 
 thead {
@@ -145,11 +155,18 @@ thead {
   color: white;
 }
 
-/* Totals panel in the bottom-right of the form area */
-.form-container {
-  position: relative;
+th, td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
 }
 
+tbody tr:hover {
+  background-color: #e0e7ff;
+  transition: 0.3s;
+}
+
+/* ---------------- Totals Panel ---------------- */
 .totals-panel.form-totals {
   position: absolute;
   right: 20px;
@@ -157,9 +174,10 @@ thead {
   display: flex;
   justify-content: flex-end;
   z-index: 20;
+  flex-direction: column;
+  gap: 12px;
 }
 
-/* Light styled card for totals inside form */
 .totals-card.light {
   background: linear-gradient(180deg,#ffffff,#f8fafc);
   color: #0f172a;
@@ -175,25 +193,36 @@ thead {
 .totals-card.light .totals-value { color: #0b1220; }
 .totals-card.light .totals-sub { color: rgba(15,23,42,0.65); font-size: 0.85rem; margin-top: 6px; }
 
-/* Responsive: on small screens, move panel below form */
-@media (max-width: 768px) {
+/* Responsive adjustments */
+@media (max-width: 1024px) {
   .totals-panel.form-totals {
     position: static;
-    margin-top: 12px;
+    margin-top: 16px;
     justify-content: center;
+    align-items: center;
+    width: 100%;
   }
 }
 
-th, td {
-  padding: 12px;
-  text-align: center;
-  border-bottom: 1px solid #e5e7eb;
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-submit {
+    width: 100%;
+  }
+
+  .preview {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  table {
+    font-size: 0.85rem;
+  }
 }
 
-tbody tr:hover {
-  background-color: #e0e7ff;
-  transition: 0.3s;
-}
 
 /* Glassmorphism Login Form - Complete & Self-Contained */
 
