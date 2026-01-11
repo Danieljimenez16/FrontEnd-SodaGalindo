@@ -26,34 +26,7 @@
   color: #111827;
 }
 
-/* Inputs */
-.tax-calculator input {
-  width: 100%;
-  padding: 0.65rem 0.8rem;
-  margin-bottom: 1rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: border 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
 
-.tax-calculator input:focus {
-  border-color: #3b82f6; /* azul para focus */
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-  outline: none;
-}
-
-/* Panel de resultados */
-.tax-calculator .results {
-  background-color: #f3f4f6; /* gris claro */
-  padding: 1rem;
-  border-radius: 10px;
-  text-align: center;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #1f2937;
-  margin-bottom: 1rem;
-}
 
 /* Botón */
 .tax-calculator .btn-primary {
@@ -70,6 +43,31 @@
 .tax-calculator .btn-primary:hover {
   background-color: #2563eb;
   transform: scale(1.03);
+}
+
+/* Panel destacado para precio menos 1% */
+.tax-calculator .results {
+  background-color: #002a6e; /* azul destacado */
+  color: #000000;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  width: 100%;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Subtexto para 1% */
+.tax-calculator .results p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #e0f2fe; /* azul claro para contraste */
 }
 
 /* Responsive: Tablets */
@@ -154,6 +152,7 @@
 
 /* Botón principal estilo calculadora */
 .dashboard-container .btn-primary {
+  margin-top: 1rem; /* espacio arriba */
   padding: 0.65rem 1rem;
   background-color: #3b82f6; /* azul base */
   color: #fff;
@@ -181,22 +180,4 @@
 
 
 
-/* Botón principal estilo calculadora */
-.dashboard-container .btn-primary {
-  margin-top: 1rem; /* espacio arriba */
-  padding: 0.65rem 1rem;
-  background-color: #3b82f6; /* azul base */
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
-}
 
-.dashboard-container .btn-primary:hover {
-  background-color: #2563eb; /* azul más oscuro */
-  transform: scale(1.05);
-  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
-}

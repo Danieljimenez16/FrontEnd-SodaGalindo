@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./Components/Login";
 import Dashboard from "./Components/Dashboard";
-import TaxCalculator from "./Components/TaxCalculator";
+import TaxCalculator from "./Components/CalcularImpuesto";
 import { getUser } from "./services/authService";
 
 function App() {
