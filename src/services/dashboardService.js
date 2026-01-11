@@ -2,7 +2,7 @@
 import axios from "axios";
 
 // URL de tu backend Node.js (cambiar al deploy de Render en producción)
-const API_URL = "https://backendsoda-galindo.onrender.com";
+const API_URL = "https://backendsoda-galindo.onrender.com/api/dashboard";
 
 // Guardar un resumen diario
 export const guardarResumen = async (data) => {
