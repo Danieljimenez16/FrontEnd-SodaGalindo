@@ -1,36 +1,39 @@
 // src/services/authService.js
 
-// Días de expiración para la opción "Recuérdame" (configurable)
 const REMEMBER_DAYS = 7;
 
-export async function login({ username, password, remember }) {
-  // Usuario fijo: Kgranados / SodaGalindo
-  const fixedUser = { username: "Kgranados", password: "SodaGalindo" };
+// Lista de usuarios fijos con rol
+const fixedUsers = [
+  { username: "Kgranados", password: "SodaGalindo", taxRate: 1, role: "full" },   // puede acceder a dashboard + calculadora
+  { username: "Gjimenez", password: "Carniceria", taxRate: 13, role: "taxOnly" }  // solo calculadora de impuestos
+];
 
+export async function login({ username, password, remember }) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      // Normalizar username (trim + lowercase) para comparar sin sensibilidad a mayúsculas
       const normalized = typeof username === 'string' ? username.trim().toLowerCase() : "";
-      const fixedNormalized = fixedUser.username.toLowerCase();
 
-      if (normalized === fixedNormalized && password === fixedUser.password) {
-        // Guardar en sessionStorage por defecto; en localStorage si 'remember' es true con expiración
-        sessionStorage.setItem("user", JSON.stringify(fixedUser));
+      // Buscar usuario en la lista
+      const user = fixedUsers.find(
+        u => u.username.toLowerCase() === normalized && u.password === password
+      );
+
+      if (user) {
+        // Guardar en sessionStorage o localStorage si 'remember'
+        sessionStorage.setItem("user", JSON.stringify(user));
         if (remember) {
           const expiresAt = Date.now() + REMEMBER_DAYS * 24 * 60 * 60 * 1000;
-          localStorage.setItem("user", JSON.stringify({ user: fixedUser, expiresAt }));
+          localStorage.setItem("user", JSON.stringify({ user, expiresAt }));
         }
         resolve(true);
       } else {
         reject(new Error("Usuario o contraseña incorrectos"));
       }
-    }, 500); // simulación de request
+    }, 500);
   });
 }
 
-// Función para verificar si ya está logueado
 export function getUser() {
-  // Primero revisa sessionStorage (sesión), luego localStorage (recordado con expiración)
   const session = sessionStorage.getItem("user");
   if (session) return JSON.parse(session);
 
@@ -39,19 +42,15 @@ export function getUser() {
 
   try {
     const parsed = JSON.parse(stored);
-    // Forma nueva: { user, expiresAt }
     if (parsed && parsed.expiresAt) {
       if (Date.now() > parsed.expiresAt) {
-        // Expirado: limpiar y devolver null
         localStorage.removeItem("user");
         return null;
       }
       return parsed.user || null;
     }
-    // Forma antigua (por compatibilidad): objeto usuario directo
     return parsed;
   } catch {
-    // Si hay error parseando, limpiar y devolver null
     localStorage.removeItem("user");
     return null;
   }
