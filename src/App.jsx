@@ -1,38 +1,22 @@
-// App.jsx
 import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./Components/Login";
 import Dashboard from "./Components/Dashboard";
-import TaxCalculator from "./Components/CalcularImpuesto";
+import TaxCalculator from "./Components/TaxCalculator";
 import { getUser } from "./services/authService";
-
-// Componente de ruta protegida
-const ProtectedRoute = ({ children, loggedIn }) => {
-  return loggedIn ? children : <Navigate to="/login" replace />;
-};
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(() => Boolean(getUser()));
 
+  if (!loggedIn) {
+    return <Login onLoginSuccess={() => setLoggedIn(true)} />;
+  }
+
   return (
     <Routes>
-      <Route path="/login" element={<Login onLoginSuccess={() => setLoggedIn(true)} />} />
-      <Route
-        path="/"
-        element={
-          <ProtectedRoute loggedIn={loggedIn}>
-            <Dashboard onLogout={() => setLoggedIn(false)} />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/tax"
-        element={
-          <ProtectedRoute loggedIn={loggedIn}>
-            <TaxCalculator />
-          </ProtectedRoute>
-        }
-      />
+      <Route path="/" element={<Navigate to="/dashboard" replace />} />
+      <Route path="/dashboard" element={<Dashboard onLogout={() => setLoggedIn(false)} />} />
+      <Route path="/tax" element={<TaxCalculator />} />
     </Routes>
   );
 }
