@@ -2,30 +2,30 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { logout, getUser } from "../services/authService";
 
-const TaxCalculator = ({ taxRate = 1 }) => {
-  const [amount, setAmount] = useState("");       // Precio del producto
+const TaxCalculator = ({ taxRate = 1, showLogoutButton = false }) => {
+  const [amount, setAmount] = useState("");
   const [baseAmount, setBaseAmount] = useState(0);
   const [taxAmount, setTaxAmount] = useState(0);
 
-  const user = getUser(); // obtenemos el usuario actual
+  const user = getUser();
 
-  // Al cambiar el precio
   const handleAmountChange = (e) => {
-    const value = e.target.value.replace(/\D/, "");
-    setAmount(value);
+  const value = e.target.value.replace(/\D/, ""); // solo números
+  setAmount(value);
 
-    const numericValue = parseFloat(value) || 0;
-    const tax = numericValue * (taxRate / 100);
-    const base = numericValue - tax;
+  const numericValue = parseFloat(value) || 0;
 
-    setBaseAmount(Math.round(base));
-    setTaxAmount(Math.round(tax));
-  };
+  // cálculo exacto inverso
+  const base = numericValue / (1 + taxRate / 100);
+  const tax = numericValue - base;
 
-  // Función para cerrar sesión
+  setBaseAmount(Math.round(base));
+  setTaxAmount(Math.round(tax));
+};
+
   const handleLogout = () => {
     logout();
-    window.location.reload(); // fuerza volver al login
+    window.location.reload();
   };
 
   return (
@@ -52,19 +52,20 @@ const TaxCalculator = ({ taxRate = 1 }) => {
         <p>Precio menos impuesto: ₡{baseAmount}</p>
       </div>
 
-      <div className="text-center">
-        {user?.role === "full" ? (
-          // Usuario full → volver al dashboard
-          <Link to="/dashboard">
-            <button className="btn-primary">Volver al Dashboard</button>
-          </Link>
-        ) : (
-          // Usuario taxOnly → cerrar sesión
-          <button className="btn-primary" onClick={handleLogout}>
-            Cerrar sesión
-          </button>
-        )}
-      </div>
+      {/* Botón condicional */}
+      {(user?.role === "full" || showLogoutButton) && (
+        <div className="text-center">
+          {user?.role === "full" ? (
+            <Link to="/dashboard">
+              <button className="btn-primary">Volver al Dashboard</button>
+            </Link>
+          ) : (
+            <button className="btn-primary" onClick={handleLogout}>
+              Cerrar sesión
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 };

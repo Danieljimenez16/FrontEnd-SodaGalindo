@@ -3,8 +3,9 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./Components/Login";
 import Dashboard from "./Components/Dashboard";
 import TaxCalculator from "./Components/CalcularImpuesto";
+import TaxPair from "./Components/ImpuestosPar"; // <-- importamos el wrapper de Gjimenez
 import { getUser } from "./services/authService";
-import ProtectedRoute from "./Components/ProtectedRoute"; // componente que controla acceso por rol
+import ProtectedRoute from "./Components/ProtectedRoute";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(() => Boolean(getUser()));
@@ -37,17 +38,21 @@ function App() {
         }
       />
 
-      {/* Calculadora de impuestos para todos los usuarios */}
+      {/* Calculadora de impuestos */}
       <Route
         path="/tax"
         element={
           <ProtectedRoute>
-            <TaxCalculator taxRate={user?.taxRate || 1} />
+            {user?.role === "taxOnly" ? (
+              <TaxPair /> // dos calculadoras para Gjimenez
+            ) : (
+              <TaxCalculator taxRate={user?.taxRate || 1} /> // calculadora normal
+            )}
           </ProtectedRoute>
         }
       />
 
-      {/* Ruta comodín: redirige según rol */}
+      {/* Ruta comodín */}
       <Route
         path="*"
         element={
