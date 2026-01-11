@@ -116,7 +116,7 @@ body, html {
 }
 
 /* ============================================
-   LAYOUT CONTAINERS
+   SECCIÓN LOGIN - LAYOUT Y CONTAINERS
    ============================================ */
 .login-container {
   width: 100%;
@@ -124,19 +124,12 @@ body, html {
   perspective: 1000px;
   padding: var(--spacing-xl);
   margin: 0 auto;
-}
-
-.dashboard-container {
-  min-height: 100vh;
-  padding: var(--spacing-xl);
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
-/* ============================================
-   CARDS Y CONTENEDORES
-   ============================================ */
 .login-card {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
@@ -174,38 +167,9 @@ body, html {
   box-shadow: var(--shadow-lg);
 }
 
-.form-container {
-  width: 100%;
-  max-width: 960px;
-  margin-bottom: var(--spacing-3xl);
-  background: var(--text-white);
-  padding: var(--spacing-xl);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg);
-  position: relative;
-}
-
-.table-container {
-  width: 100%;
-  max-width: 1200px;
-  margin-bottom: var(--spacing-3xl);
-  background: var(--text-white);
-  padding: var(--spacing-xl);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg);
-}
-
 /* ============================================
-   TIPOGRAFÍA
+   LOGIN - TIPOGRAFÍA
    ============================================ */
-.dashboard-title {
-  text-align: center;
-  color: var(--text-white);
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: var(--spacing-2xl);
-}
-
 .login-header {
   text-align: center;
   margin-bottom: var(--spacing-2xl);
@@ -230,32 +194,12 @@ body, html {
   text-align: center;
 }
 
-h2 {
-  font-size: 1.5rem;
-  color: var(--text-gray);
-  font-weight: 600;
-  margin-bottom: var(--spacing-lg);
-}
-
 /* ============================================
-   FORMULARIOS
+   LOGIN - FORMULARIOS E INPUTS
    ============================================ */
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-lg);
-}
-
 .form-group {
   margin-bottom: var(--spacing-lg);
   position: relative;
-}
-
-.form-group label {
-  font-weight: 600;
-  margin-bottom: var(--spacing-xs);
-  display: block;
-  color: var(--text-gray);
 }
 
 /* Input Wrapper con Label Flotante */
@@ -321,21 +265,6 @@ h2 {
   background: rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(6, 182, 212, 0.2);
-}
-
-/* Inputs Estándar (para dashboard) */
-input:not(.input-wrapper input) {
-  padding: 10px;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
-  outline: none;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-  width: 100%;
-}
-
-input:not(.input-wrapper input):focus {
-  border-color: var(--accent-2);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
 }
 
 /* Focus Border Animation */
@@ -463,7 +392,7 @@ input:not(.input-wrapper input):focus {
 }
 
 /* ============================================
-   BOTONES
+   LOGIN - BOTONES
    ============================================ */
 .btn {
   background: linear-gradient(90deg, var(--accent-2) 0%, var(--accent) 100%);
@@ -506,112 +435,6 @@ input:not(.input-wrapper input):focus {
   transform: translateY(0);
 }
 
-/* Botón Submit */
-.btn-submit {
-  grid-column: span 1;
-  padding: var(--spacing-md) var(--spacing-xl);
-  background-color: #4f46e5;
-  color: var(--text-white);
-  border-radius: var(--radius-md);
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all var(--transition-base);
-  justify-self: center;
-  touch-action: manipulation;
-  min-height: var(--touch-target-md);
-}
-
-.btn-submit:hover {
-  background-color: #4338ca;
-  transform: translateY(-2px);
-}
-
-/* Botón Logout */
-.logout-btn {
-  padding: var(--spacing-sm) 14px;
-  background: linear-gradient(90deg, #374151, #111827);
-  color: var(--text-white);
-  border: none;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  font-weight: 700;
-  box-shadow: 0 6px 18px rgba(17, 24, 39, 0.24);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-  touch-action: manipulation;
-  min-height: var(--touch-target-md);
-}
-
-.logout-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.28);
-}
-
-.logout-btn:active {
-  transform: translateY(0);
-}
-
-/* Botón Edit */
-.btn-edit {
-  padding: 6px var(--spacing-md);
-  background: linear-gradient(90deg, var(--warning), var(--warning-dark));
-  color: var(--text-white);
-  border: none;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-  touch-action: manipulation;
-  min-height: var(--touch-target-sm);
-}
-
-.btn-edit:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(249, 115, 22, 0.18);
-}
-
-.btn-edit:active {
-  transform: translateY(0);
-}
-
-/* Botón Delete */
-.btn-delete {
-  padding: 6px var(--spacing-md);
-  background: linear-gradient(180deg, var(--error), var(--error-dark));
-  color: var(--text-white);
-  border: none;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: all var(--transition-base);
-  touch-action: manipulation;
-  min-height: var(--touch-target-sm);
-}
-
-.btn-delete:hover {
-  background-color: var(--error-dark);
-  transform: translateY(-1px);
-}
-
-.btn-delete:active {
-  transform: translateY(0);
-}
-
-/* Botón Cancel */
-.btn-cancel {
-  padding: 10px 14px;
-  background: transparent;
-  color: var(--text-gray);
-  border: 1px solid #e5e7eb;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  font-weight: 700;
-  touch-action: manipulation;
-  min-height: var(--touch-target-md);
-}
-
-.btn-cancel:active {
-  transform: scale(0.98);
-}
-
 /* Loading State */
 .btn.loading {
   pointer-events: none;
@@ -644,145 +467,36 @@ input:not(.input-wrapper input):focus {
   opacity: 1;
 }
 
-/* ============================================
-   TABLA
-   ============================================ */
-.table-wrapper {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 600px;
-}
-
-thead {
-  background-color: #4f46e5;
-  color: white;
-}
-
-th, td {
-  padding: var(--spacing-md);
-  text-align: center;
-  border-bottom: 1px solid #e5e7eb;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-
-/* Columna de fecha - ancho fijo para evitar desbordamiento */
-th:first-child,
-td:first-child {
-  min-width: 100px;
-  max-width: 120px;
-  font-size: 0.9rem;
-  white-space: normal;
-  line-height: 1.3;
-}
-
-tbody tr {
-  transition: background-color var(--transition-base);
-}
-
-tbody tr:hover {
-  background-color: #e0e7ff;
-}
-
-/* ============================================
-   PREVISUALIZACIÓN Y TOTALES
-   ============================================ */
-.preview {
-  margin-top: 20px;
-  padding: var(--spacing-lg);
-  background: #eef2ff;
+.logout-btn {
+  padding: var(--spacing-sm) 14px;
+  background: linear-gradient(90deg, #374151, #111827);
+  color: var(--text-white);
+  border: none;
   border-radius: var(--radius-md);
-  display: flex;
-  justify-content: space-between;
-  font-weight: bold;
-  flex-wrap: wrap;
-  gap: var(--spacing-md);
+  cursor: pointer;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(17, 24, 39, 0.24);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  touch-action: manipulation;
+  min-height: var(--touch-target-md);
 }
 
-.positive {
-  color: #16a34a;
+.logout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.28);
 }
 
-.negative {
-  color: var(--error-dark);
-}
-
-/* Separación entre formulario y resúmenes guardados */
-.table-container {
-  margin-top: 60px; /* Espacio adicional sobre la tabla de resúmenes */
-}
-
-.totals-panel.form-totals {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  display: flex;
-  justify-content: flex-end;
-  z-index: 20;
-  flex-direction: column;
-  gap: var(--spacing-md);
-}
-
-.totals-card.light {
-  background: linear-gradient(180deg, #ffffff, #f8fafc);
-  color: var(--text-dark);
-  padding: var(--spacing-md) var(--spacing-lg);
-  border-radius: var(--radius-md);
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
-  min-width: 220px;
-  text-align: right;
-  border: 1px solid rgba(15, 23, 42, 0.04);
-}
-
-.totals-card.light .totals-label {
-  color: rgba(15, 23, 42, 0.7);
-}
-
-.totals-card.light .totals-value {
-  color: #0b1220;
-}
-
-.totals-card.light .totals-sub {
-  color: rgba(15, 23, 42, 0.65);
-  font-size: 0.85rem;
-  margin-top: 6px;
+.logout-btn:active {
+  transform: translateY(0);
 }
 
 /* ============================================
-   MENSAJES Y NOTIFICACIONES
+   LOGIN - MENSAJES Y ESTADOS
    ============================================ */
 .welcome {
   color: var(--text-white);
   font-weight: 700;
   font-size: 1rem;
-}
-
-/* Toast */
-.toast {
-  position: fixed;
-  top: 22px;
-  right: 22px;
-  background: linear-gradient(90deg, var(--success), var(--success-dark));
-  color: var(--text-white);
-  padding: var(--spacing-md) var(--spacing-lg);
-  border-radius: var(--radius-md);
-  box-shadow: 0 10px 30px rgba(5, 150, 105, 0.16);
-  opacity: 0;
-  transform: translateY(-8px);
-  transition: opacity var(--transition-base), transform var(--transition-base);
-  z-index: 9999;
-  font-weight: 700;
-  max-width: calc(100vw - 44px);
-}
-
-.toast.show {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* Error States */
@@ -877,26 +591,32 @@ tbody tr:hover {
   font-size: 1rem;
 }
 
+/* Toast */
+.toast {
+  position: fixed;
+  top: 22px;
+  right: 22px;
+  background: linear-gradient(90deg, var(--success), var(--success-dark));
+  color: var(--text-white);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 30px rgba(5, 150, 105, 0.16);
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity var(--transition-base), transform var(--transition-base);
+  z-index: 9999;
+  font-weight: 700;
+  max-width: calc(100vw - 44px);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ============================================
-   RESPONSIVE DESIGN
+   LOGIN - RESPONSIVE
    ============================================ */
-
-/* Grid responsivo para formularios */
-@media (min-width: 640px) {
-  .form-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .form-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  
-  .totals-panel.form-totals {
-    position: absolute;
-  }
-}
 
 /* Tablets (768px - 1024px) */
 @media (max-width: 1024px) {
@@ -920,33 +640,14 @@ tbody tr:hover {
     font-size: 0.95rem;
   }
 
-  .logout-btn,
-  .btn-cancel {
+  .logout-btn {
     padding: 10px var(--spacing-lg);
     font-size: 0.95rem;
-  }
-
-  .btn-edit,
-  .btn-delete {
-    padding: var(--spacing-sm) 14px;
-    font-size: 0.9rem;
-  }
-  
-  .totals-panel.form-totals {
-    position: static;
-    margin-top: var(--spacing-lg);
-    justify-content: center;
-    align-items: center;
-    width: 100%;
   }
 }
 
 /* Tablets pequeñas y móviles grandes (481px - 767px) */
 @media (max-width: 767px) {
-  body {
-    padding: var(--spacing-lg);
-  }
-
   .login-card {
     padding: var(--spacing-xl) 20px;
     border-radius: var(--radius-lg);
@@ -988,19 +689,6 @@ tbody tr:hover {
     min-height: var(--touch-target-md);
   }
 
-  .btn-edit,
-  .btn-delete {
-    padding: var(--spacing-sm) var(--spacing-md);
-    font-size: 0.875rem;
-    min-height: var(--touch-target-sm);
-  }
-
-  .btn-cancel {
-    padding: 10px var(--spacing-lg);
-    font-size: 0.9rem;
-    min-height: var(--touch-target-md);
-  }
-
   .password-toggle {
     padding: 10px;
     right: var(--spacing-sm);
@@ -1019,44 +707,10 @@ tbody tr:hover {
     padding: 14px var(--spacing-lg);
     font-size: 0.9rem;
   }
-
-  .dashboard-title {
-    font-size: 2rem;
-  }
-
-  .form-container,
-  .table-container {
-    padding: 20px;
-    margin: 0 var(--spacing-lg);
-  }
-  
-  .table-container {
-    margin-top: 50px; /* Mantener separación en tablet */
-  }
-
-  table {
-    font-size: 0.85rem;
-  }
-  
-  th, td {
-    padding: 10px 8px;
-  }
-  
-  /* Fecha más compacta en tablet */
-  th:first-child,
-  td:first-child {
-    min-width: 90px;
-    max-width: 100px;
-    font-size: 0.8rem;
-  }
 }
 
 /* Móviles (hasta 480px) */
 @media (max-width: 480px) {
-  body {
-    padding: var(--spacing-md);
-  }
-
   .login-card {
     padding: 20px var(--spacing-lg);
     border-radius: var(--radius-md);
@@ -1105,25 +759,6 @@ tbody tr:hover {
     min-height: var(--touch-target-lg);
   }
 
-  .btn-edit,
-  .btn-delete {
-    padding: 10px 14px;
-    font-size: 0.825rem;
-    min-height: var(--touch-target-md);
-    width: 100%;
-  }
-
-  .btn-cancel {
-    width: 100%;
-    padding: var(--spacing-md) var(--spacing-lg);
-    font-size: 0.875rem;
-    min-height: var(--touch-target-lg);
-  }
-
-  .btn-submit {
-    width: 100%;
-  }
-
   .password-wrapper input {
     padding-right: 52px;
     font-size: 16px; /* Evita zoom en iOS */
@@ -1157,62 +792,6 @@ tbody tr:hover {
   .input-wrapper input:not(:placeholder-shown) + label {
     transform: translateY(-12px) scale(0.92);
   }
-
-  .dashboard-container {
-    padding: var(--spacing-lg);
-  }
-
-  .dashboard-title {
-    font-size: 1.75rem;
-    margin-bottom: var(--spacing-xl);
-  }
-
-  .form-container,
-  .table-container {
-    padding: var(--spacing-lg);
-    margin: 0 var(--spacing-sm);
-  }
-  
-  .table-container {
-    margin-top: 40px; /* Separación en móvil */
-  }
-
-  .form-grid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-md);
-  }
-
-  .preview {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  /* Ajustes de tabla para móviles */
-  table {
-    font-size: 0.8rem;
-    min-width: 500px; /* Reducir ancho mínimo */
-  }
-  
-  th, td {
-    padding: 8px 6px;
-  }
-  
-  /* Fecha optimizada para móvil */
-  th:first-child,
-  td:first-child {
-    min-width: 75px;
-    max-width: 85px;
-    font-size: 0.75rem;
-    padding: 8px 4px;
-  }
-  
-  /* Botones de acción más compactos en tabla */
-  td .btn-edit,
-  td .btn-delete {
-    padding: 4px 8px;
-    font-size: 0.75rem;
-    min-height: 32px;
-  }
 }
 
 /* Móviles muy pequeños (hasta 360px) */
@@ -1233,18 +812,442 @@ tbody tr:hover {
     font-size: 0.8rem;
   }
 
-  .logout-btn,
-  .btn-cancel {
+  .logout-btn {
     font-size: 0.85rem;
     padding: 10px 14px;
   }
+}
 
-  .btn-edit,
-  .btn-delete {
-    font-size: 0.8rem;
-    padding: var(--spacing-sm) var(--spacing-md);
+/* ============================================
+   DASHBOARD - LAYOUT Y CONTAINERS
+   ============================================ */
+.dashboard-container {
+  min-height: 100vh;
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: var(--spacing-3xl);
+  background: var(--text-white);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+.table-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: var(--spacing-3xl);
+  background: var(--text-white);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  margin-top: 60px; /* Separación del formulario */
+}
+
+/* ============================================
+   DASHBOARD - TIPOGRAFÍA
+   ============================================ */
+.dashboard-title {
+  text-align: center;
+  color: var(--text-white);
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: var(--spacing-2xl);
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: var(--text-gray);
+  font-weight: 600;
+  margin-bottom: var(--spacing-lg);
+}
+
+/* ============================================
+   DASHBOARD - FORMULARIOS
+   ============================================ */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+  display: block;
+  color: var(--text-gray);
+}
+
+/* Inputs Estándar (para dashboard) */
+input:not(.input-wrapper input) {
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  outline: none;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  font-size: 15px;
+}
+
+input:not(.input-wrapper input):focus {
+  border-color: var(--accent-2);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+}
+
+/* Input type date - más ancho para evitar desbordamiento */
+input[type="date"] {
+  min-width: 160px;
+  padding: 10px 12px;
+}
+
+/* ============================================
+   DASHBOARD - BOTONES
+   ============================================ */
+.btn-submit {
+  grid-column: span 1;
+  padding: var(--spacing-md) var(--spacing-xl);
+  background-color: #4f46e5;
+  color: var(--text-white);
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all var(--transition-base);
+  justify-self: center;
+  touch-action: manipulation;
+  min-height: var(--touch-target-md);
+}
+
+.btn-submit:hover {
+  background-color: #4338ca;
+  transform: translateY(-2px);
+}
+
+.btn-edit {
+  padding: 6px var(--spacing-md);
+  background: linear-gradient(90deg, var(--warning), var(--warning-dark));
+  color: var(--text-white);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  touch-action: manipulation;
+  min-height: var(--touch-target-sm);
+}
+
+.btn-edit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(249, 115, 22, 0.18);
+}
+
+.btn-edit:active {
+  transform: translateY(0);
+}
+
+.btn-delete {
+  padding: 6px var(--spacing-md);
+  background: linear-gradient(180deg, var(--error), var(--error-dark));
+  color: var(--text-white);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  touch-action: manipulation;
+  min-height: var(--touch-target-sm);
+}
+
+.btn-delete:hover {
+  background-color: var(--error-dark);
+  transform: translateY(-1px);
+}
+
+.btn-delete:active {
+  transform: translateY(0);
+}
+
+.btn-cancel {
+  padding: 10px 14px;
+  background: transparent;
+  color: var(--text-gray);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 700;
+  touch-action: manipulation;
+  min-height: var(--touch-target-md);
+}
+
+.btn-cancel:active {
+  transform: scale(0.98);
+}
+
+/* ============================================
+   DASHBOARD - TABLA
+   ============================================ */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+thead {
+  background-color: #4f46e5;
+  color: white;
+}
+
+th, td {
+  padding: var(--spacing-md);
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Columna de fecha - ancho fijo para evitar desbordamiento */
+th:first-child,
+td:first-child {
+  min-width: 100px;
+  max-width: 120px;
+  font-size: 0.9rem;
+  white-space: normal;
+  line-height: 1.3;
+}
+
+tbody tr {
+  transition: background-color var(--transition-base);
+}
+
+tbody tr:hover {
+  background-color: #e0e7ff;
+}
+
+/* ============================================
+   DASHBOARD - PREVISUALIZACIÓN Y TOTALES
+   ============================================ */
+.preview {
+  margin-top: 20px;
+  padding: var(--spacing-lg);
+  background: #eef2ff;
+  border-radius: var(--radius-md);
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.positive {
+  color: #16a34a;
+}
+
+.negative {
+  color: var(--error-dark);
+}
+
+.totals-panel.form-totals {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 20;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.totals-card.light {
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  color: var(--text-dark);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  min-width: 220px;
+  text-align: right;
+  border: 1px solid rgba(15, 23, 42, 0.04);
+}
+
+.totals-card.light .totals-label {
+  color: rgba(15, 23, 42, 0.7);
+}
+
+.totals-card.light .totals-value {
+  color: #0b1220;
+}
+
+.totals-card.light .totals-sub {
+  color: rgba(15, 23, 42, 0.65);
+  font-size: 0.85rem;
+  margin-top: 6px;
+}
+
+/* ============================================
+   DASHBOARD - RESPONSIVE
+   ============================================ */
+
+/* Grid responsivo para formularios */
+@media (min-width: 640px) {
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .form-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .totals-panel.form-totals {
+    position: absolute;
+  }
+}
+
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+  .form-container,
+  .table-container {
+    padding: 20px;
+    margin: 0 var(--spacing-lg);
+  }
+  
+  .table-container {
+    margin-top: 50px;
   }
 
+  table {
+    font-size: 0.85rem;
+  }
+  
+  th, td {
+    padding: 10px 8px;
+  }
+  
+  th:first-child,
+  td:first-child {
+    min-width: 90px;
+    max-width: 100px;
+    font-size: 0.8rem;
+  }
+  
+  .totals-panel.form-totals {
+    position: static;
+    margin-top: var(--spacing-lg);
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+/* Tablets pequeñas y móviles grandes (481px - 767px) */
+@media (max-width: 767px) {
+  .dashboard-title {
+    font-size: 2rem;
+  }
+
+  .form-container,
+  .table-container {
+    padding: 20px;
+    margin: 0 var(--spacing-lg);
+  }
+  
+  .table-container {
+    margin-top: 50px;
+  }
+
+  table {
+    font-size: 0.85rem;
+  }
+  
+  th, td {
+    padding: 10px 8px;
+  }
+  
+  th:first-child,
+  td:first-child {
+    min-width: 90px;
+    max-width: 100px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Móviles (hasta 480px) */
+@media (max-width: 480px) {
+  .dashboard-container {
+    padding: var(--spacing-lg);
+  }
+
+  .dashboard-title {
+    font-size: 1.75rem;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .form-container,
+  .table-container {
+    padding: var(--spacing-lg);
+    margin: 0 var(--spacing-sm);
+  }
+  
+  .table-container {
+    margin-top: 40px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .preview {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .btn-submit {
+    width: 100%;
+  }
+  
+  table {
+    font-size: 0.8rem;
+    min-width: 500px;
+  }
+  
+  th, td {
+    padding: 8px 6px;
+  }
+  
+  th:first-child,
+  td:first-child {
+    min-width: 75px;
+    max-width: 85px;
+    font-size: 0.75rem;
+    padding: 8px 4px;
+  }
+  
+  td .btn-edit,
+  td .btn-delete {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    min-height: 32px;
+  }
+  
+  /* Input de fecha más ancho en móvil */
+  input[type="date"] {
+    min-width: 170px;
+  }
+}
+
+/* Móviles muy pequeños (hasta 360px) */
+@media (max-width: 360px) {
   .dashboard-title {
     font-size: 1.5rem;
   }
@@ -1258,7 +1261,6 @@ tbody tr:hover {
     font-size: 1.25rem;
   }
   
-  /* Tabla muy compacta para pantallas pequeñas */
   table {
     font-size: 0.75rem;
     min-width: 450px;
@@ -1268,7 +1270,6 @@ tbody tr:hover {
     padding: 6px 4px;
   }
   
-  /* Fecha muy compacta */
   th:first-child,
   td:first-child {
     min-width: 70px;
