@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { guardarResumen, obtenerResumenes, eliminarResumen, actualizarResumen } from "../services/dashboardService";
 import { getUser, logout } from "../services/authService";
+import { Link } from "react-router-dom";
+
 
 function Dashboard({ onLogout }) {
   const [user] = useState(() => getUser());
@@ -127,35 +129,41 @@ function Dashboard({ onLogout }) {
     return acc + Number(rGain || 0);
   }, 0);
 
-  const formatColones = (num) => `₡ ${Number(num).toLocaleString()}`; 
+  const formatColones = (num) => `₡ ${Number(num).toLocaleString()}`;
 
   return (
     <div className="dashboard-container">
-      <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:18}}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 18 }}>
         <h1 className="dashboard-title">Dashboard Financiero</h1>
-        <div style={{textAlign:'right'}}>
+        <div style={{ textAlign: 'right' }}>
           {user && <div className="welcome">Bienvenido, {user.username}</div>}
-          <button className="logout-btn" style={{marginTop:8}} onClick={() => { logout(); if (onLogout) onLogout(); }}>Cerrar sesión</button>
+          <button className="logout-btn" style={{ marginTop: 8 }} onClick={() => { logout(); if (onLogout) onLogout(); }}>Cerrar sesión</button>
+          <div style={{ marginBottom: 16 }}>
+            <Link to="/tax">
+              <button className="btn-primary">Ir a Calculadora de Impuestos</button>
+            </Link>
+          </div>
+
         </div>
       </div>
 
       <div className={`toast ${showSuccess ? 'show' : ''}`} role="status" aria-live="polite">{successMessage}</div>
 
       {fetchError && (
-        <div className="error-banner" role="alert" aria-live="assertive" style={{marginBottom:16}}>
-          <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:12}}>
-            <div style={{fontWeight:700}}>Hubo un problema al cargar los resúmenes</div>
-            <div style={{color:'#fff',opacity:0.9}}>{fetchError.message}</div>
+        <div className="error-banner" role="alert" aria-live="assertive" style={{ marginBottom: 16 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
+            <div style={{ fontWeight: 700 }}>Hubo un problema al cargar los resúmenes</div>
+            <div style={{ color: '#fff', opacity: 0.9 }}>{fetchError.message}</div>
           </div>
-          <div style={{marginTop:10,display:'flex',gap:8}} className="error-actions">
+          <div style={{ marginTop: 10, display: 'flex', gap: 8 }} className="error-actions">
             <button className="btn" onClick={loadResumenes}>Reintentar</button>
             <button className="btn-delete" onClick={() => setFetchError(null)}>Descartar</button>
-            <button className="btn" onClick={() => setShowErrorDetails(s => !s)} style={{background:'#374151',borderRadius:8}}>
+            <button className="btn" onClick={() => setShowErrorDetails(s => !s)} style={{ background: '#374151', borderRadius: 8 }}>
               {showErrorDetails ? 'Ocultar detalles' : 'Mostrar detalles'}
             </button>
           </div>
           {showErrorDetails && (
-            <pre className="error-details" style={{marginTop:12,background:'#111827',color:'#fff',padding:12,borderRadius:8,overflow:'auto'}}>
+            <pre className="error-details" style={{ marginTop: 12, background: '#111827', color: '#fff', padding: 12, borderRadius: 8, overflow: 'auto' }}>
               {JSON.stringify(fetchError.details, null, 2)}
             </pre>
           )}
@@ -195,7 +203,7 @@ function Dashboard({ onLogout }) {
             <span className={gananciaFinal >= 0 ? "positive" : "negative"}>{formatColones(gananciaFinal)}</span>
           </div>
 
-          <div style={{display:'flex',gap:8,alignItems:'center'}}>
+          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
             <button type="submit" className="btn-submit">{isEditing ? 'Actualizar' : 'Guardar'}</button>
             {isEditing && <button type="button" className="btn-cancel" onClick={handleCancelEdit}>Cancelar</button>}
           </div>
@@ -241,7 +249,7 @@ function Dashboard({ onLogout }) {
                     <td>{formatColones(r.salarios)}</td>
                     <td>{formatColones(rowTotal)}</td>
                     <td className={rowGanancia >= 0 ? "positive" : "negative"}>{formatColones(rowGanancia)}</td>
-                    <td style={{display:'flex',gap:8}}>
+                    <td style={{ display: 'flex', gap: 8 }}>
                       <button className="btn-edit" onClick={() => handleEdit(r.id)}>Editar</button>
                       <button className="btn-delete" onClick={() => handleDelete(r.id)}>Eliminar</button>
                     </td>

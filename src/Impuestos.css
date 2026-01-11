@@ -1,0 +1,202 @@
+/* TaxCalculator.css */
+
+/* Contenedor principal */
+.tax-calculator {
+  max-width: 450px; /* ancho máximo en desktop */
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+.tax-calculator h2 {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  color: #1f2937; /* gris oscuro */
+}
+
+/* Labels de inputs */
+.tax-calculator label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #111827;
+}
+
+/* Inputs */
+.tax-calculator input {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.tax-calculator input:focus {
+  border-color: #3b82f6; /* azul para focus */
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  outline: none;
+}
+
+/* Panel de resultados */
+.tax-calculator .results {
+  background-color: #f3f4f6; /* gris claro */
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+/* Botón */
+.tax-calculator .btn-primary {
+  padding: 0.65rem 1rem;
+  background-color: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.tax-calculator .btn-primary:hover {
+  background-color: #2563eb;
+  transform: scale(1.03);
+}
+
+/* Responsive: Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .tax-calculator {
+    max-width: 500px;
+    padding: 2rem;
+  }
+
+  .tax-calculator h2 {
+    font-size: 1.75rem;
+  }
+
+  .tax-calculator input {
+    font-size: 1.1rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .tax-calculator .results {
+    font-size: 1.1rem;
+  }
+
+  .tax-calculator .btn-primary {
+    font-size: 1rem;
+    padding: 0.75rem 1.25rem;
+  }
+}
+
+/* Responsive: Desktop grande */
+@media (min-width: 1024px) {
+  .tax-calculator {
+    max-width: 550px;
+    padding: 2.5rem;
+  }
+
+  .tax-calculator h2 {
+    font-size: 2rem;
+  }
+
+  .tax-calculator input {
+    font-size: 1.15rem;
+    padding: 0.8rem 1.2rem;
+  }
+
+  .tax-calculator .results {
+    font-size: 1.15rem;
+  }
+
+  .tax-calculator .btn-primary {
+    font-size: 1.05rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+/* Responsive: Móviles pequeños */
+@media (max-width: 480px) {
+  .tax-calculator {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .tax-calculator h2 {
+    font-size: 1.4rem;
+  }
+
+  .tax-calculator input {
+    font-size: 0.95rem;
+    padding: 0.55rem 0.7rem;
+  }
+
+  .tax-calculator .results {
+    font-size: 0.95rem;
+  }
+
+  .tax-calculator .btn-primary {
+    font-size: 0.95rem;
+    padding: 0.55rem 1rem;
+  }
+}
+
+/* Dashboard.css */
+
+/* Botón principal estilo calculadora */
+.dashboard-container .btn-primary {
+  padding: 0.65rem 1rem;
+  background-color: #3b82f6; /* azul base */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}
+
+.dashboard-container .btn-primary:hover {
+  background-color: #2563eb; /* azul más oscuro */
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+}
+
+/* Tamaño responsive del botón */
+@media (max-width: 768px) {
+  .dashboard-container .btn-primary {
+    padding: 0.6rem 0.9rem;
+    font-size: 0.95rem;
+  }
+}
+
+
+
+/* Botón principal estilo calculadora */
+.dashboard-container .btn-primary {
+  margin-top: 1rem; /* espacio arriba */
+  padding: 0.65rem 1rem;
+  background-color: #3b82f6; /* azul base */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}
+
+.dashboard-container .btn-primary:hover {
+  background-color: #2563eb; /* azul más oscuro */
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+}
