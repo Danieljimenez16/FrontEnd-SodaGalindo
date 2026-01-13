@@ -393,7 +393,7 @@ function Dashboard({ onLogout }) {
                               Editar
                             </button>
                             <button className="btn-delete" onClick={() => handleDelete(r.id)}>
-                              Eliminar
+                            Eliminar
                             </button>
                           </td>
                         </tr>
