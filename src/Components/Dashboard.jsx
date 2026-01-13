@@ -284,44 +284,21 @@ function Dashboard({ onLogout }) {
 
       {/* Resúmenes por semana */}
       <div className="weekly-resumenes" style={{ marginTop: 32 }}>
-        <div style={{ 
-          display: 'flex', 
-          justifyContent: 'space-between', 
-          alignItems: 'center', 
-          marginBottom: 24,
-          gap: 20
-        }}>
+        <div className="weekly-header">
           <h2 style={{ margin: 0, color: '#fff' }}>Resúmenes por Semana</h2>
           
           {semanasOrdenadas.length > 0 && (
-            <div style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: 12,
-              marginLeft: 'auto'
-            }}>
-              <label htmlFor="filtro-semana" style={{ 
-                fontWeight: 500, 
-                color: '#fff',
-                whiteSpace: 'nowrap'
-              }}>
+            <div className="filtro-container">
+              <label htmlFor="filtro-semana" className="filtro-label">
                 Filtrar:
               </label>
               <select
                 id="filtro-semana"
+                className="filtro-select"
                 value={filtroSemana}
                 onChange={(e) => {
                   setFiltroSemana(e.target.value);
                   setOpenWeek(null);
-                }}
-                style={{
-                  padding: '8px 12px',
-                  borderRadius: 6,
-                  border: '1px solid #d1d5db',
-                  background: '#fff',
-                  cursor: 'pointer',
-                  fontSize: 14,
-                  minWidth: 200
                 }}
               >
                 <option value="todas">Todas las semanas</option>
@@ -393,7 +370,7 @@ function Dashboard({ onLogout }) {
                               Editar
                             </button>
                             <button className="btn-delete" onClick={() => handleDelete(r.id)}>
-                            Eliminar
+                              Eliminar
                             </button>
                           </td>
                         </tr>
